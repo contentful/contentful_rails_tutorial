@@ -1,0 +1,28 @@
+.jumbotron.text-center
+  .container
+    a.lang-logo href="/"
+      img*{src: "https://www.contentful.com/assets/images/logos/contentful-dark-1a51a42b.svg"}
+    h1 Rails Product Demo
+
+    br
+    br
+
+    p
+      = "This is a demo of how to use Rails and Contentful. "
+    p
+      = "You can use the default configuration or create your own demo data and configure it."
+    a.btn.btn-lg.btn-success*{type:"button", href: contentful_users_path}
+      span.glyphicon.glyphicon-edit
+      = " To Configuration"
+
+.container
+  .alert.alert-info.text-center role="alert"
+    p
+      = "To customize this demo with your own data, you will require a Contentful account."
+    p
+      = "You can get one by clicking the link below."
+
+    br
+
+    a.btn.btn-lg.btn-warning*{type: "button", href: "https://www.contentful.com/sign-up/#starter"}
+     = " Sign Up"

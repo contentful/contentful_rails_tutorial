@@ -1,0 +1,11 @@
+.container
+  .col-md-5.col-md-offset-2
+    h1 Editing Contentful Configuration
+
+    == render 'form'
+
+    .actions
+      a.btn.btn-success*{href: contentful_user_path(@contentful_user)}
+        = 'Show'
+      a.btn.btn-warning.pull-right*{href: contentful_users_path}
+        = 'Back'

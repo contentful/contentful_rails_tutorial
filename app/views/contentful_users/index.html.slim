@@ -1,0 +1,24 @@
+.container
+  .col-md-8.col-md-offset-2
+    h1 Listing Contentful Configurations
+
+    table.table.table-striped
+      thead
+        tr
+          th Name
+          th
+          th
+          th
+
+      tbody
+        - @contentful_users.each do |contentful_user|
+          tr
+            td = contentful_user.name
+            td = link_to 'Show', contentful_user
+            td = link_to 'Edit', edit_contentful_user_path(contentful_user)
+            td = link_to 'Destroy', contentful_user, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+    br
+
+    a.btn.btn-success*{href: new_contentful_user_path}
+      = 'New Contentful Configuration'

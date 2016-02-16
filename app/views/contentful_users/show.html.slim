@@ -1,0 +1,52 @@
+.container
+  .col-md-offset-2
+    h1 Products
+
+  / Iterate over each Product fetched from Contentful's API
+  - @contentful_user.render.each do |product|
+    .row.col-md-12.col-md-offset-2
+
+      - unless product.image.blank?
+        .col-md-2
+          / Render image with 140px width and use it's title as description text
+          img*{src: product.image.first.image_url(w: 140), alt: product.image.first.title}
+
+      .col.md-6
+        / Render product name and brand's name and website
+        h4
+          = product.product_name
+          - unless product.brand.blank?
+            small
+              = " by "
+              a*{href: product.brand.website}
+                = product.brand.company_name
+
+        - unless product.categories.blank? 
+          h6
+            / Render product categories separated by comma
+            = product.categories.map(&:title).join(', ')
+
+        / Render product description
+        p.small = "#{product.product_description.slice(0, 100)}..."
+
+        / Render CTA with product's website
+        a.btn.btn-warning*{href: product.website}
+          = "Buy Now!"
+
+        / Render product tags if present
+        - unless product.tags.blank?
+          h6
+            = "Tags: "
+            small
+              = product.tags.join(', ')
+
+      / Render all product images if more than 1 present
+      - if !product.image.blank? && product.image.size > 1
+        .col-md-6
+          h6 All Images
+          .row
+            - product.image.each do |image|
+              .col-md-1
+                img*{src: image.image_url(w: 40), alt: image.title}
+      br
+      br

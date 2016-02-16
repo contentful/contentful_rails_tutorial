@@ -1,0 +1,24 @@
+= form_for @contentful_user do |f|
+  - if @contentful_user.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@contentful_user.errors.count, "error")} prohibited this Contentful Configuration from being saved:"
+      ul
+        - @contentful_user.errors.full_messages.each do |message|
+          li = message
+
+  .input-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .input-group
+    = f.label :space_id
+    = f.text_field :space_id, placeholder: 'Your Contentful Space ID', class: 'form-control'
+  .input-group
+    = f.label :access_token
+    = f.text_field :access_token, placeholder: 'Your Production Delivery API Token', class: 'form-control'
+  .input-group
+    = f.label :content_type
+    = f.text_field :content_type, placeholder: 'Your Product Content Type ID', class: 'form-control'
+
+  br
+  br
+  .actions = f.submit(class: 'btn btn-primary')
