@@ -60,7 +60,7 @@ module ContentfulRenderable
   extend ActiveSupport::Concern
 
   def render
-    client.entries(content_type: content_type_id, include: 2)
+    client.entries(content_type: content_type_id, include: 2, 'sys.id' => contentful_id)
   end
 
   private
@@ -79,7 +79,7 @@ end
 * Add the fields to your Model:
 
 ```bash
-$ rails g migration add_contentful_fields_to_<MODEL_NAME> access_token:string space_id:string content_type_id:string
+$ rails g migration add_contentful_fields_to_<MODEL_NAME> access_token:string space_id:string content_type_id:string contentful_id:string
 ```
 
 * Include Concern on your Model:
@@ -95,7 +95,7 @@ end
 Assuming our model is a Product
 
 ```erb
-<% @products.render.each do |product| %>
+<% @products.map(&:render).each do |product| %>
   <div class="contentful_product">
     <h1><%= product.title %></h1>
     <img src="<%= product.image.first.image_url %>" />
