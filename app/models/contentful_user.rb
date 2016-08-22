@@ -1,7 +1,11 @@
 class ContentfulUser < ActiveRecord::Base
   # Gets all entries and it's links for defined Content Type in Configuration
   def render
-    client.entries(include: 2, content_type: self.content_type)
+    client.entries(include: 2, content_type: content_type)
+  end
+
+  def complete?
+    name? && space_id? && access_token? && content_type?
   end
 
   private
