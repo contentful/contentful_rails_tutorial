@@ -109,7 +109,7 @@ Using the Concern approach makes each of the instances of your model configurabl
 If you want to pull out the configuration to a separate object, you are free to add a `belongs_to` relationship.
 That way you can separate your Contentful Configuration from your models.
 
-## This is just the beggining
+## This is just the beginning
 
 This is just a very simple tutorial to get things running, but every project has different needs, and we want to provide you
 with the best solutions we can.
