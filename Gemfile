@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+# Version specified for Heroku
+ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '~> 4.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -18,7 +19,7 @@ gem 'pg'
 
 gem "slim-rails" , '~> 3.0'
 
-gem "contentful", '~> 0.9'
+gem "contentful", '~> 2.9'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
